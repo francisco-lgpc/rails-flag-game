@@ -1,3 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<%= image_tag 'map.png' %>
+<ul>
+  <% Game::MODES.each_with_index do |game_mode, i| %>
+    <li>
+      <%= link_to game_mode, new_game_path(game_mode: i + 1) %>
+    </li>
+  <% end %>
+</ul>
