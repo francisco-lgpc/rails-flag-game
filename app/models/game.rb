@@ -1,10 +1,10 @@
 class Game < ApplicationRecord
   belongs_to :user
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   validates :score, :mode, presence: true, numericality: { only_integer: true }
 
-  after_initialize :load_defaults
+  before_validation :load_defaults
 
   MODES = ['Country to Flag', 'Country to Map', 'Flag to Country',
            'Flag to Map',     'Map to Country', 'Map to Flag']
@@ -20,6 +20,6 @@ class Game < ApplicationRecord
   private
 
   def load_defaults
-    self.score = 0
+    self.score = 0 if self.score.nil?
   end
 end

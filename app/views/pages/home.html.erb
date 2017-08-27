@@ -3,7 +3,7 @@
 <ul>
   <% Game::MODES.each_with_index do |game_mode, i| %>
     <li>
-      <%= link_to game_mode, new_game_path(game_mode: i + 1) %>
+      <%= link_to game_mode, games_path(game_mode: i + 1), method: :post %>
     </li>
   <% end %>
 </ul>

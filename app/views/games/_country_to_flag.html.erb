@@ -1,3 +1,39 @@
 
 
-<%= image_tag @countries.first.flag %>
+<%#= image_tag @countries.first.flag %>
+
+
+
+<% if @question.nil? %>
+
+  <div class="text-center">
+    <h2> You scored <%= @game.score %> points! </h2>
+    <br>
+    <%= link_to 'Play Again', games_path(game_mode: 1), method: :post, class: 'btn btn-primary' %>
+  </div>
+
+
+
+
+
+
+
+<% else %>
+
+
+  <div class="text-center">
+    <h2> <%= @question.answer.country.name %> </h2>
+  </div>
+
+  <br><br><br><br>
+
+  <div class="wrapper-choice text-center">
+    <% @question.choices.each do |choice| %>
+      <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post do %>
+        <%= image_tag choice.country.flag, width: 90, height: 50 %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+<% end %>

@@ -8,7 +8,17 @@
 
 require 'open-uri'
 
+puts "Destroying countries..."
+
 Country.destroy_all
+
+
+puts "Creating a default user..."
+
+User.create!(email: "test@email.com", password: "password")
+
+
+puts "Creating countries..."
 
 countries_url = "https://restcountries.eu/rest/v2/all"
 countries_serialized = open(countries_url).read
@@ -23,3 +33,6 @@ countries.each do |country|
       flag: country["flag"]
     )
 end
+
+puts "Done!"
+

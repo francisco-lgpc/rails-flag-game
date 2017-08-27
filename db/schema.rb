@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170827190749) do
   end
 
   create_table "attempts", force: :cascade do |t|
+    t.boolean  "correct"
     t.integer  "question_id"
     t.integer  "country_id"
     t.datetime "created_at",  null: false
@@ -60,9 +61,10 @@ ActiveRecord::Schema.define(version: 20170827190749) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.boolean  "answered",   default: false
     t.integer  "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["game_id"], name: "index_questions_on_game_id", using: :btree
   end
 
