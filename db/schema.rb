@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170826230034) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "mode"
+    t.integer  "mode"
     t.integer  "score"
     t.integer  "user_id"
     t.datetime "created_at", null: false

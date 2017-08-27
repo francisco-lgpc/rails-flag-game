@@ -1,3 +1,6 @@
-<h1> <%= @game.mode %> </h1>
+<h1 class='text-center'> <%= @game.mode_name %> </h1>
+<h3>Score: <%= @game.score %>  </h3>
 
-<%= image_tag 'map.png' %>
+<%= render 'country_to_flag' %>
+
+<%= @test %>
