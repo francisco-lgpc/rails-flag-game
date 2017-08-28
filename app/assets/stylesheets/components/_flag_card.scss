@@ -6,26 +6,33 @@
   background-position: center;
   color: white;
   position: relative;
-  margin: 15px;
+  margin: 15px auto;
   border: 1px solid $light-grey;
 
   @media (max-width: 600px) {
     height: 40px;
     width: 80px;
-    margin: 10px 0;
+    margin: 10px auto;
   }
 
   @media (max-width: 400px) {
     height: 30px;
     width: 60px;
-    margin: 5px 0;
+    margin: 5px auto;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 300px) {
     height: 25px;
     width: 50px;
-    margin: 5px 0;
+    margin: 5px auto;
   }
+
+ @media (max-width: 300px) {
+    height: 20px;
+    width: 40px;
+    margin: 5px auto;
+  }
+
   &:hover{
     border: 1px solid $grey
   }
