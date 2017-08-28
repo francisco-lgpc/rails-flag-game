@@ -1,4 +1,4 @@
-.wrapper-choices{
+.wrapper-std{
   width: 60%;
   margin: auto;
   @media (max-width: 600px) {
@@ -9,7 +9,23 @@
     width: 95%;
   }
 
+  @media (max-width: 300px) {
+    width: 100%;
+  }
+}
+
+.wrapper-large-margin {
+  width: 50%;
+  margin: auto;
+  @media (max-width: 600px) {
+    width: 80%;
+  }
+
   @media (max-width: 400px) {
+    width: 90%;
+  }
+
+  @media (max-width: 300px) {
     width: 100%;
   }
 }

@@ -1,9 +1,21 @@
-<h1>Welcome to Flags 4 Fun</h1>
-<br><br>
-<ul>
-  <% Game::MODES.each_with_index do |game_mode, i| %>
-    <li>
-      <%= link_to game_mode, games_path(game_mode: i + 1), method: :post %>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="text-center">
+    <h1>Flags 4 Fun</h1>
+  </div>
+  <br><br>
+  <div class="wrapper-large-margin">
+    <div class="menu text-center">
+      <div class="header-menu">
+        <h3> Game Modes </h3>
+      </div>
+      <hr>
+      <ul>
+        <% Game::MODES.each_with_index do |game_mode, i| %>
+          <li>
+            <%= link_to game_mode, games_path(game_mode: i + 1), method: :post, class: 'menu-elem' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
