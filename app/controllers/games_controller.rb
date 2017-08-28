@@ -44,11 +44,11 @@ class GamesController < ApplicationController
 
   end
 
-  def sample_countries(n = 10)
-    Country.where(id: Country.ids.sample(5))
+  def sample_countries(n = 12)
+    Country.where(id: Country.ids.sample(n))
   end
 
-  def generate_choices_and_answer(question, n = 10)
+  def generate_choices_and_answer(question, n = 12)
     countries = sample_countries(n)
     countries.map do |country|
       Choice.create!(country: country, question: question)
