@@ -1,7 +1,7 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: $transparent-sand;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -74,4 +74,26 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+@media (max-width: 900px) {
+  .navbar-wagon {
+    height: 50px;
+  }
+
+  /* Logo */
+  .navbar-wagon-brand img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-wagon {
+    height: 40px;
+  }
+
+  /* Logo */
+  .navbar-wagon-brand img {
+    height: 30px;
+  }
 }
