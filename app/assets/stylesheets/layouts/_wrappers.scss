@@ -1,4 +1,11 @@
 .wrapper-choices{
   width: 60%;
   margin: auto;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 }
