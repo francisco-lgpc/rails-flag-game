@@ -5,6 +5,21 @@
     <p class="header-elem-score hidden-xxs">Score: <%= @game.score %> </p>
   </div>
 
+<% if @question.nil? %>
 
-  <%= render 'games/game_modes/country_to_flag' %>
+
+  <div class="text-center">
+    <h2> You scored <%= @game.score %> points! </h2>
+    <br>
+    <%= link_to 'Play Again', games_path(game_mode: 1), method: :post, class: 'btn btn-primary' %>
+  </div>
+
+
+<% else %>
+
+  <%= render "games/game_modes/#{@game.mode_path}" %>
+
+<% end %>
+
+
 </div>

@@ -1,36 +1,45 @@
 .flag-card {
   height: 50px;
   width: 100px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 0 .3px 2px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
-  color: white;
+  color: $blue;
   position: relative;
   margin: 15px auto;
   border: 1px solid $light-grey;
+  display: flex;
 
   &:hover{
     border: 1px solid $grey
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0 3px;
+    text-align: center;
   }
 
   @media (max-width: 600px) {
     height: 40px;
     width: 80px;
     margin: 10px auto;
+    p {
+      font-size: 10px;
+    }
+
   }
   @media (max-width: 400px) {
     height: 30px;
     width: 60px;
     margin: 5px auto;
+    p {
+      font-size: 6px;
+    }
   }
   @media (max-width: 300px) {
     height: 25px;
     width: 50px;
-    margin: 5px auto;
-  }
- @media (max-width: 300px) {
-    height: 20px;
-    width: 40px;
     margin: 5px auto;
   }
 }
@@ -48,3 +57,6 @@
   opacity: 0.1;
 }
 
+.card-text {
+  margin: auto;
+}

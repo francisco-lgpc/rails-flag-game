@@ -2,27 +2,7 @@
 
 <%#= image_tag @countries.first.flag %>
 
-
-
-<% if @question.nil? %>
-
-
-  <div class="text-center">
-    <h2> You scored <%= @game.score %> points! </h2>
-    <br>
-    <%= link_to 'Play Again', games_path(game_mode: 1), method: :post, class: 'btn btn-primary' %>
-  </div>
-
-
-<% else %>
-
-  <hr>
-
-  <div class="question text-center">
-    <h2> <%= @question.answer.country.name %> </h2>
-  </div>
-
-  <hr>
+  <%= render 'games/game_modes/shared/country', country_name: @question.answer.country.name %>
 
   <div class="wrapper-std">
     <div class="row">
@@ -36,5 +16,3 @@
     </div>
   </div>
 
-
-<% end %>

@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 
 gem 'worldize'
+gem 'jqvmap-rails', '~> 2.1', '>= 2.1.2.2'
 
 group :development, :test do
   gem 'pry-byebug'

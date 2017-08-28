@@ -35,4 +35,3 @@ countries.each do |country|
 end
 
 puts "Done!"
-

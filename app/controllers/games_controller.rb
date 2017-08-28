@@ -37,29 +37,33 @@ class GamesController < ApplicationController
   end
 
   def map_to_country
-
+    generate_questions(15, 12, for_map: true)
   end
 
   def map_to_flag
-
+    generate_questions(15, 12, for_map: true)
   end
 
-  def sample_countries(n = 12)
-    Country.where(id: Country.ids.sample(n))
+  def sample_countries(n = 12, options = {})
+    if options[:for_map]
+      Country.where(id: Country.available_on_map.ids.sample(n))
+    else
+      Country.where(id: Country.ids.sample(n))
+    end
   end
 
-  def generate_choices_and_answer(question, n = 12)
-    countries = sample_countries(n)
+  def generate_choices_and_answer(question, n = 12, options = {})
+    countries = sample_countries(n, options)
     countries.map do |country|
       Choice.create!(country: country, question: question)
     end
     Answer.create!(country: countries.sample, question: question)
   end
 
-  def generate_questions(n = 15)
-    (1..n).map do
+  def generate_questions(num_questions = 15, num_choices = 12, options = {})
+    (1..num_questions).map do
       question = Question.create!(game: @game)
-      generate_choices_and_answer(question)
+      generate_choices_and_answer(question, num_choices, options)
     end
   end
 
