@@ -1,0 +1,11 @@
+<div class="wrapper-std">
+  <div class="row">
+    <% @question.choices.each do |choice| %>
+      <div class="col-md-3 col-xs-4">
+        <div class="flag-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= image_path choice.country.flag %>);">
+          <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post, class: 'card-link' do %><% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
