@@ -8,7 +8,21 @@
     jQuery(document).ready(function() {
       jQuery('#vmap').vectorMap({ map: 'world_en' });
       jQuery('#vmap').vectorMap('set', 'colors', {<%= j @question.answer.country.code.downcase %>: '<%= j colors[:red] %>'});
+      jQuery('#vmap').vectorMap(
+      {
+          onLabelShow: function(event, label, code)
+          {
+            // Hide the label
+            event.preventDefault();
+          },
+          onRegionOver: function(event, code)
+          {
+            // Hide hover effect
+            event.preventDefault();
+          },
+      });
     });
+
   </script>
 <% end %>
 
