@@ -3,7 +3,8 @@ class AttemptsController < ApplicationController
     question = Question.find(params[:question_id])
 
     attempt = Attempt.new(question: question)
-    attempt.country = Country.find(params[:country_id])
+
+    attempt.country = Country.where(id: params[:country_id]).first || Country.find_by(code: params['country_code'])
     attempt.correct = attempt.country.id == question.answer.country.id
     attempt.save!
 
@@ -12,6 +13,7 @@ class AttemptsController < ApplicationController
 
     question.game.score += 1 if attempt.correct
     question.game.save!
+
 
     redirect_to question.game
   end

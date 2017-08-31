@@ -1,1 +1,3 @@
-NOT AVAILABLE
+  <%= render 'games/game_modes/shared/country', country_name: @question.answer.country.name %>
+
+  <%= render 'games/game_modes/shared/map_clickable', question: @question %>
