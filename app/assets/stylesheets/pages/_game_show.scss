@@ -15,3 +15,18 @@
   }
 }
 
+.question {
+  img {
+    width: 300px;
+    @media(max-width: 1000px) {
+      width: 250px;
+    }
+    @media(max-width: 400px) {
+      width: 200px;
+    }
+    @media(max-width: 300px) {
+      width: 150px;
+    }
+  }
+}
+

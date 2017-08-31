@@ -25,15 +25,15 @@ class GamesController < ApplicationController
   end
 
   def country_to_map
-
+    generate_questions(15, 12, for_map: true)
   end
 
   def flag_to_country
-
+    generate_questions
   end
 
   def flag_to_map
-
+    generate_questions(15, 12, for_map: true)
   end
 
   def map_to_country
