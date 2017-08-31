@@ -21,25 +21,28 @@
   }
 
   @media (max-width: 1300px) {
-    height: 60px;
-    width: 120px;
+    height: 70px;
+    width: 140px;
     margin: 10px auto;
     p {
       font-size: 10px;
     }
-
+  }
+  @media (max-width: 700px) {
+    height: 10vw;
+    width: 20vw;
+    margin: 10px auto;
+    p {
+      font-size: 10px;
+    }
   }
   @media (max-width: 400px) {
-    height: 50px;
-    width: 100px;
     margin: 5px auto;
     p {
       font-size: 8.5px;
     }
   }
   @media (max-width: 300px) {
-    height: 35px;
-    width: 70px;
     margin: 5px auto;
     p {
       font-size: 7px;
