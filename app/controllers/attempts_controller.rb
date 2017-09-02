@@ -14,7 +14,9 @@ class AttemptsController < ApplicationController
     question.game.score += 1 if attempt.correct
     question.game.save!
 
-
-    redirect_to question.game
+    respond_to do |format|
+      format.html { redirect_to question.game }
+      format.js
+    end
   end
 end

@@ -29,17 +29,10 @@
               url: '<%= j question_attempts_path(@question) %>',
               data: d,
               success: function(data) {
+                if(!data.error) location.reload(true);
                 console.log("Successfully created at " + data.html_url);
               }
             });
-
-
-              var message = 'You clicked "'
-                  + region
-                  + '" which has the code: '
-                  + code.toUpperCase();
-
-              alert(message);
           }
       });
     });
