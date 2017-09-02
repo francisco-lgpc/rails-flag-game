@@ -1,2 +1,4 @@
-$(".question").html("<%= %>");
-console.log('test')
+$(".question").html("<h2> <%= @question.answer.country.name %> </h2>");
+$('.header-elem-score').html('Score: <%= @question.game.score %>');
+
+// console.log('<%= @question.answer.country.name %>');

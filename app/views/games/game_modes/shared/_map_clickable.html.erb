@@ -3,37 +3,38 @@
 <div id="vmap"></div>
 
 <% content_for(:after_js) do %>
-  <script type="text/javascript" src="../dist/maps/jquery.vmap.world.js" charset="utf-8"></script>
-    <script type="text/javascript">
+  <script type="text/javascript">
     jQuery(document).ready(function() {
-      jQuery('#vmap').vectorMap({ map: 'world_en' });
       jQuery('#vmap').vectorMap(
       {
-          onLabelShow: function(event, label, code)
-          {
-            // Hide the label
-            event.preventDefault();
-          },
-          onRegionOver: function(event, code)
-          {
-            // Hide hover effect
-            event.preventDefault();
-          },
-          onRegionClick: function(element, code, region)
-          {
-            var d = {
-              country_code: code.toUpperCase(),
-            };
-            $.ajax({
-              type: "POST",
-              url: '<%= j question_attempts_path(@question) %>',
-              data: d,
-              success: function(data) {
-                if(!data.error) location.reload(true);
-                console.log("Successfully created at " + data.html_url);
-              }
-            });
-          }
+        onLabelShow: function(event, label, code)
+        {
+          // Hide the label
+          event.preventDefault();
+        },
+        onRegionOver: function(event, code)
+        {
+          // Hide hover effect
+          // event.preventDefault();
+        },
+        onRegionClick: function(element, code, region)
+        {
+          selectedRegion: null;
+          var d = {
+            country_code: code.toUpperCase(),
+            question_id: '<%= question.id %>',
+          };
+          $.ajax({
+            type: "POST",
+            url: '<%= j question_attempts_path(question) %>',
+            data: d,
+            success: function(data) {
+              if(!data.error) location.reload(true);
+            }
+          });
+        },
+        selectedColor: null,
+        hoverColor: '<%= j colors[:sand] %>',
       });
     });
 

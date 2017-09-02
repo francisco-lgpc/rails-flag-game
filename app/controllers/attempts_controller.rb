@@ -1,5 +1,6 @@
 class AttemptsController < ApplicationController
   def create
+    p params
     question = Question.find(params[:question_id])
 
     attempt = Attempt.new(question: question)
@@ -14,9 +15,11 @@ class AttemptsController < ApplicationController
     question.game.score += 1 if attempt.correct
     question.game.save!
 
+    @question = question.game.questions.find(&:not_answered?)
+
     respond_to do |format|
+      format.js unless @question.nil?
       format.html { redirect_to question.game }
-      format.js
     end
   end
 end

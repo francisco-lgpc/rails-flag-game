@@ -13,9 +13,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @question = @game.questions.find do |question|
-      question.not_answered?
-    end
+    @question = @game.questions.find(&:not_answered?)
   end
 
   private
