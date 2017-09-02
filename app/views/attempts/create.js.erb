@@ -1,4 +1,10 @@
-$(".question").html("<h2> <%= @question.answer.country.name %> </h2>");
+<% if @question.game.mode == 2 %>
+  $(".question").html("<h2> <%= @question.answer.country.name %> </h2>");
+  console.log("2")
+<% else %>
+  $(".question").html("<%= j image_tag @question.answer.country.flag %>");
+  console.log("<%= j image_tag @question.answer.country.flag %>")
+<% end %>
 $('.header-elem-score').html('Score: <%= @question.game.score %>');
 
 // console.log('<%= @question.answer.country.name %>');
