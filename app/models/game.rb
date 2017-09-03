@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :user
-  has_many :questions, dependent: :destroy
+  has_many :questions, dependent: :delete_all
 
   validates :score, :mode, presence: true, numericality: { only_integer: true }
 
