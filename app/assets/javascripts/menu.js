@@ -1,4 +1,6 @@
+$('.icons').removeClass('hidden');
 $('.icons').toggle();
+
 
 $(document).ready(function(){
 
@@ -26,7 +28,7 @@ $(document).ready(function(){
     $(this).find('.icons').line(w * .2, 13, w * .3, 13,  { color: 'rgba(255, 111, 89, 1)', stroke: 1.5 } )
     $(this).find('.icons').line(w * .7, 13, w * .8, 13,  { color: 'rgba(255, 111, 89, 1)', stroke: 1.5 } )
 
-    $('.menu').css('box-shadow', '2px 8px 16px 0px rgba(80,80,80,0.3), 2px 6px 20px 0px rgba(80,80,80,0.5)').css('margin', '38px auto;');
+    // $('.menu').css('box-shadow', '2px 8px 16px 0px rgba(80,80,80,0.3), 2px 6px 20px 0px rgba(80,80,80,0.5)').css('margin', '38px auto;');
 
   });
 
@@ -34,7 +36,7 @@ $(document).ready(function(){
     $(this).find('.icons').toggle();
     $(this).find('.link-text').toggle();
 
-    //$('.menu').css('box-shadow', '2px 4px 8px 0px rgba(120,120,120,0.3), 2px 2px 14px 0px rgba(120,120,120,0.5)').css('margin', '40px auto;');
+    // $('.menu').css('box-shadow', '2px 4px 8px 0px rgba(120,120,120,0.3), 2px 2px 14px 0px rgba(120,120,120,0.5)').css('margin', '40px auto;');
 
   });
 
