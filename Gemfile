@@ -20,6 +20,11 @@ gem 'uglifier'
 gem 'worldize'
 gem 'jqvmap-rails', '~> 2.1', '>= 2.1.2.2'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+gem 'sinatra', ">= 2.0.0.beta2", require: false # Sidekiq Web UI Dependency
+
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
