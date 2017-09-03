@@ -19,8 +19,8 @@ class CleanUpGamesJob < ApplicationJob
   def destroy_children_and_self(games)
     unless games.map(&:questions).reduce(:+).nil?
       games.map(&:questions).reduce(:+).each do |q|
-        q.answer.try(:destroy!)
-        q.attempt.try(:destroy!)
+        q.answer.try(:destroy)
+        q.attempt.try(:destroy)
         q.choices.try(:destroy_all)
       end
     end
