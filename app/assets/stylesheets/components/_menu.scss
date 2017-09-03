@@ -2,9 +2,13 @@
   background: $sand;
   border-radius: 4px;
   padding: 20px 30px;
-  box-shadow: 0 1px 5px 0.5px rgb(210, 210, 210);
+  box-shadow: 2px 4px 8px 0px rgba(120,120,120,0.3), 2px 2px 14px 0px rgba(120,120,120,0.5);
   margin: 40px auto;
   max-width: 400px;
+  &:hover {
+    box-shadow: 2px 8px 16px 0px rgba(80,80,80,0.3), 2px 6px 20px 0px rgba(80,80,80,0.5);
+    margin: 38px auto;
+  }
 
   ul {
     list-style-type: none;
@@ -19,7 +23,10 @@
     color: $blue;
     text-decoration: none;
     &:hover {
-      color: $red;
+      // color: rgb(50, 50, 50);
+    }
+    &:focus {
+      outline: none;
     }
   }
 
@@ -27,4 +34,9 @@
     border-top: .1px solid $grey;
     margin-bottom: 30px;
   }
+}
+
+.link-content {
+  position: relative;
+  height: 30px;
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="text-center">
-    <h1>Flags 4 Fun</h1>
+    <h1><b>Flags 4 Fun</b></h1>
   </div>
   <div class="wrapper-large-margin">
     <div class="menu text-center">
@@ -11,7 +11,16 @@
       <ul>
         <% Game::MODES.each_with_index do |game_mode, i| %>
           <li>
-            <%= link_to game_mode, games_path(game_mode: i + 1), method: :post, class: 'menu-elem' %>
+            <%= link_to games_path(game_mode: i + 1), method: :post, class: 'menu-elem' do %>
+              <div class="link-content">
+                <div class="link-text"> <%= game_mode %> </div>
+                <div class="icons">
+                  <%= image_tag game_mode.split(' ').first.downcase, width: 25 %>
+                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  <%= image_tag game_mode.split(' ').last.downcase, width: 25 %>
+                </div>
+              </div>
+            <% end %>
           </li>
         <% end %>
       </ul>
