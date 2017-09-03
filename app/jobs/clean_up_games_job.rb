@@ -22,6 +22,7 @@ class CleanUpGamesJob < ApplicationJob
         q.answer.try(:destroy)
         q.attempt.try(:destroy)
         q.choices.try(:destroy_all)
+        q.destroy
       end
     end
     games.each(&:destroy)
