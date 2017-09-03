@@ -1,5 +1,6 @@
+$('.icons').toggle();
+
 $(document).ready(function(){
-  $('.icons').toggle();
 
   $(".menu-elem").hover(function(){
     var w = $(this).find('.link-text').width()
