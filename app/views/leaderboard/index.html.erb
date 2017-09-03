@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="tabs">
+    <% Game::MODES.each_with_index do |game_mode, i| %>
+      <%= link_to '#', class: "tab#{' active' if i == 2}" do %>
+        <h3> <%= game_mode %> </h3>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="wrapper-tab-content">
+    <div class="tab-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+            <tr>
+              <td> <%= game.user.email %> </td>
+              <td> <%= game.score %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
