@@ -8,7 +8,7 @@ class CleanUpGamesJob < ApplicationJob
       "games.created_at < ?", 1.day.ago
     )
 
-    destroy_children_and_self(incomplete_games)
+    delete_children_and_self(incomplete_games)
 
     # Sub-optimal raw ruby alternativ
     # Game.all.reject { |game| game.questions.all?(&:answered) }
@@ -16,16 +16,15 @@ class CleanUpGamesJob < ApplicationJob
 
   private
 
-  def destroy_children_and_self(games)
-    unless games.map(&:questions).reduce(:+).nil?
-      games.map(&:questions).reduce(:+).each do |q|
-        q.answer.try(:destroy)
-        q.attempt.try(:destroy)
-        q.choices.try(:destroy_all)
-        q.destroy
-      end
-    end
-    games.each(&:destroy)
+  def delete_children_and_self(games)
+    games.each do |g|
+      g.questions.each do |q|
+        q.answer.try(:delete)
+        q.attempt.try(:delete)
+        q.choices.try(:delete_all)
+        q.delete
+      end unless g.questions.empty?
+      g.delete
+    end unless games.empty?
   end
-
 end
