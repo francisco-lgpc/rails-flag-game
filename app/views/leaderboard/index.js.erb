@@ -1,10 +1,10 @@
 
+$('.tabs').find('.tab').removeClass('active');
+$('.tabs').find('.tab').eq(<%= @games.first.mode - 1 %>).addClass('active');
+
 <% @games.each_with_index do |game, i| %>
-  $('td').eq( <%= (i * 2) - 1%> ).text(<%= j game.user.email %>)
-  $('td').eq( <%= (i * 2)    %> ).text(<%= game.score %>)
-  console.log('==')
+	$('td').eq( <%= (i * 2) %> ).text('<%= j game.user.email %>');
+	$('td').eq( <%= (i * 2) + 1 %> ).text(<%= game.score %>);
 <% end %>
 
-  //console.log(<%= @games %>)
-
-  console.log('test')
+  

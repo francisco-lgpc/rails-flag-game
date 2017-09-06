@@ -1,7 +1,7 @@
 <div class="container">
   <div class="tabs">
     <% Game::MODES.each_with_index do |game_mode, i| %>
-      <%= link_to leaderboard_index_path(game_mode: i + 1), class: "tab#{' active' if i == 2}", remote: true do %>
+      <%= link_to leaderboard_index_path(game_mode: i + 1), class: "tab#{' active' if i == 0}", remote: true do %>
         <h3> <%= game_mode %> </h3>
       <% end %>
     <% end %>
