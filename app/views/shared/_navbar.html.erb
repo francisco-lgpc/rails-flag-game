@@ -7,10 +7,12 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <%= link_to "Leaderboard", leaderboard_index_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Leaderboard", leaderboard_index_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -48,7 +50,7 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <!-- Links when logged in -->
-          <li> <%= link_to "Leaderboard", "#", class: "navbar-wagon-item navbar-wagon-link" %> </li>
+          <li> <%= link_to "Leaderboard", leaderboard_index_path, class: "navbar-wagon-item navbar-wagon-link" %> </li>
 
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
