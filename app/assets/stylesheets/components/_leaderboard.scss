@@ -1,0 +1,26 @@
+.leaderboard {
+	width: 100%;
+}
+
+.leaderboard-row {
+	background: white;
+	color: $grey;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+	border-radius: 3px;
+	height: 60px;
+	line-height: 55px;
+	padding: 2px 100px;
+	margin: 7px 0;
+}
+
+.leaderboard-header-row {
+	background: $red;
+	color: white;
+	font-weight: bold;
+}
+
+.leaderboard-data {
+
+}

@@ -1,14 +1,26 @@
 /* Main navbar */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: $transparent-sand;
+  box-shadow: 0 3px 12px 0 rgba(0,0,0,0.17),0 3px 3px 0 rgba(0,0,0,0.11);
+  // background: linear-gradient(
+  //   180deg, $sand-lighter, $sand-light, $sand, $sand, $sand, $sand-light, $sand-lighter
+  // );
+  background: $sand;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:hover {
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.17),0 6px 3px 0 rgba(0,0,0,0.11);
+    height: 74px;
+    margin-bottom: -4px;
+
+  }
 }
+
+
 
 /* Logo */
 .navbar-wagon-brand img {

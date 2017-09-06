@@ -9,22 +9,22 @@
 
   <div class="wrapper-tab-content">
     <div class="tab-content">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="leaderboard">
+        <div>
+          <div class="leaderboard-row leaderboard-header-row">
+            <p>User</p>
+            <p>Score</p>
+          </div>
+        </div>
+        <div>
           <% @games.each do |game| %>
-            <tr>
-              <td> <%= game.user.email %> </td>
-              <td> <%= game.score %> </td>
-            </tr>
+            <div class="leaderboard-row">
+              <div class="leaderboard-data"><p> <%= game.user.email %> </p> </div>
+              <div class="leaderboard-data"><p> <%= game.score %> </p> </div>
+            </div>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
