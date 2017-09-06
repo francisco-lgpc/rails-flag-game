@@ -3,8 +3,8 @@ $('.tabs').find('.tab').removeClass('active');
 $('.tabs').find('.tab').eq(<%= @games.first.mode - 1 %>).addClass('active');
 
 <% @games.each_with_index do |game, i| %>
-	$('td').eq( <%= (i * 2) %> ).text('<%= j game.user.email %>');
-	$('td').eq( <%= (i * 2) + 1 %> ).text(<%= game.score %>);
+	$('.leaderboard-data').eq( <%= (i * 2) %> ).html('<p> <%= j game.user.email %> </p>');
+	$('.leaderboard-data').eq( <%= (i * 2) + 1 %> ).html('<p> <%= game.score %> </p>');
 <% end %>
 
   
