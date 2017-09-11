@@ -12,15 +12,33 @@
       <div class="leaderboard">
         <div>
           <div class="leaderboard-row leaderboard-header-row">
-            <p>User</p>
-            <p>Score</p>
+            <div class="col-xs-1">
+              
+            </div>
+            
+            <div class="col-xs-8 col-sm-9">
+              <p>User</p>
+            </div>
+
+            <div class="col-xs-3 col-sm-2 text-center">
+              <p>Score</p>
+            </div>
           </div>
         </div>
         <div>
-          <% @games.each do |game| %>
-            <div class="leaderboard-row">
-              <div class="leaderboard-data"><p> <%= game.user.email %> </p> </div>
-              <div class="leaderboard-data"><p> <%= game.score %> </p> </div>
+          <% @games.each_with_index do |game, i| %>
+            <div class="row leaderboard-row">
+              <div class="col-xs-1">
+                <p class="rank"> <%= i + 1 %> </p>
+              </div>
+              
+              <div class="col-xs-8 col-sm-9">
+                <div class="leaderboard-data"> <p> <%= game.user.email %> </p> </div>
+              </div>
+
+              <div class="col-xs-3 col-sm-2  text-center">
+                <div class="leaderboard-data"><p> <%= game.score %> </p> </div>
+              </div>
             </div>
           <% end %>
         </div>
