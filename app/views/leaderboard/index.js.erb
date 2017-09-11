@@ -2,9 +2,17 @@
 $('.tabs').find('.tab').removeClass('active');
 $('.tabs').find('.tab').eq(<%= @games.first.mode - 1 %>).addClass('active');
 
+
+// Populate leaderboard
 <% @games.each_with_index do |game, i| %>
 	$('.leaderboard-data').eq( <%= (i * 2) %> ).html('<p> <%= j game.user.email %> </p>');
 	$('.leaderboard-data').eq( <%= (i * 2) + 1 %> ).html('<p> <%= game.score %> </p>');
+<% end %>
+
+// in case there are less than 10 games write blank leaderboard entries.
+<% @games.size.upto(9) do |i| %>
+	$('.leaderboard-data').eq( <%= (i * 2) %> ).html('');
+	$('.leaderboard-data').eq( <%= (i * 2) + 1 %> ).html('');
 <% end %>
 
   
