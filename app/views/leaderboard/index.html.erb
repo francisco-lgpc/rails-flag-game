@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- tabs for desktop and tablet -->
   <div class="tabs hidden-xs">
     <% Game::MODES.each_with_index do |game_mode, i| %>
       <%= link_to leaderboard_index_path(game_mode: i + 1), class: "tab#{' active' if i == 0}", remote: true do %>
@@ -7,25 +8,26 @@
     <% end %>
   </div>
 
-  <div class="wrapper-tabs-mobile visible-xs">
-    <div class="tabs tabs-mobile">
+  <!-- tabs for mobile -->
+  <div class="wrapper-tabs-xs visible-xs">
+    <div class="tabs tabs-xs">
       <% Game::MODES.first(3).each_with_index do |game_mode, i| %>
-        <%= link_to leaderboard_index_path(game_mode: i + 1), class: "tab tab-mobile#{' active' if i == 0}", remote: true do %>
+        <%= link_to leaderboard_index_path(game_mode: i + 1), class: "tab tab-xs#{' active' if i == 0}", remote: true do %>
           <h3> <%= game_mode %> </h3>
         <% end %>
       <% end %>
     </div>
 
-    <div class="tabs tabs-mobile">
+    <div class="tabs tabs-xs">
       <% Game::MODES.last(3).each_with_index do |game_mode, i| %>
-        <%= link_to leaderboard_index_path(game_mode: i + 1 + 3), class: "tab tab-mobile tab-under", remote: true do %>
+        <%= link_to leaderboard_index_path(game_mode: i + 1 + 3), class: "tab tab-xs tab-under", remote: true do %>
           <h3> <%= game_mode %> </h3>
         <% end %>
       <% end %>
     </div>
   </div>
 
-
+  <!-- content that is shown below, upon clicking the tab -->
   <div class="wrapper-tab-content">
     <div class="tab-content">
       <div class="leaderboard">
@@ -57,6 +59,23 @@
 
               <div class="col-xs-3 col-sm-2  text-center">
                 <div class="leaderboard-data"><p> <%= game.score %> </p> </div>
+              </div>
+            </div>
+          <% end %>
+
+          <!-- generates empty rows in case there are less than 10 games -->
+          <% @games.size.upto(9) do |i| %>
+            <div class="row leaderboard-row">
+              <div class="col-xs-1">
+                <p class="rank"> <%= i + 1 %> </p>
+              </div>
+              
+              <div class="col-xs-8 col-sm-9">
+                <div class="leaderboard-data"> <p> </p> </div>
+              </div>
+
+              <div class="col-xs-3 col-sm-2  text-center">
+                <div class="leaderboard-data"><p> </p> </div>
               </div>
             </div>
           <% end %>
