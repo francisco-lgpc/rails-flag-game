@@ -1,12 +1,12 @@
 <div class="wrapper-std">
   <div class="row">
-    <% question.choices.each do |choice| %>
+    <% question.choices.each_with_index do |choice, i| %>
       <div class="col-md-3 col-xs-4">
         <div class="flag-card" style="background-image: linear-gradient(<%= colors[:transparent_sand] %>, <%= colors[:light_grey] %>), url("");">
           <div class="card-text">
             <p> <%= choice.country.name %> </p>
           </div>
-          <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post, class: 'card-link' do %><% end %>
+          <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post, remote: true, class: "card-link #{i}" do %><% end %>
         </div>
       </div>
     <% end %>

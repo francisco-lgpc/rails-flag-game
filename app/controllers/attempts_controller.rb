@@ -19,7 +19,7 @@ class AttemptsController < ApplicationController
     @question = question.game.questions.find(&:not_answered?)
 
     respond_to do |format|
-      format.js unless @question.nil?
+      format.js
       format.html { redirect_to question.game }
     end
   end
