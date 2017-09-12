@@ -5,6 +5,9 @@
   box-shadow: 0 3px 5px rgba(0,0,0,.4);
   margin: 10px 10px 0px 10px;
   border-radius: 10px 10px 0 0;
+    @media (max-width: 600px) {
+      margin: 10px 0 0 0;
+    }
 }
 .tabs a {
   color: $red;
@@ -51,7 +54,57 @@
   color: white;
   border-radius: 0 0 3px 3px;
   padding: 20px 35px;
+    @media (max-width: 600px) {
+      padding: 16px 25px;
+      margin: 0px 0px 50px 0px;
+    }
+    @media (max-width: 500px) {
+      padding: 14px 22px;;
+    }
+    @media (max-width: 400px) {
+      padding: 5px 10px;
+    }  
 }
 .tab-content {
   padding: 25px 30px;
+    @media (max-width: 600px) {
+      padding: 20px;
+    }
+    @media (max-width: 500px) {
+      padding: 14px;
+    }
+    @media (max-width: 400px) {
+      padding: 0;
+    }  
+}
+
+
+.tab.tab-mobile {
+  flex: 0 0 33.33%;
+  padding: 15px 8px;
+}
+
+.tab.tab-under {
+  border-radius: 0;
+}
+
+.tabs.tabs-mobile {
+  margin-top: 0;
+  h3 {
+    margin: 0;
+    @media (max-width: 500px) {
+      font-size: 13px;
+    }
+    @media (max-width: 400px) {
+      font-size: 11px;
+    }
+    @media (max-width: 350px) {
+      font-size: 10px;
+    }
+  }
+
+}
+
+.wrapper-tabs-mobile {
+  margin-top: 10px;
 }

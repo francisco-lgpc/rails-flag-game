@@ -1,7 +1,7 @@
 
 $('.tabs').find('.tab').removeClass('active');
-$('.tabs').find('.tab').eq(<%= @games.first.mode - 1 %>).addClass('active');
-
+$('.tabs').find('.tab').eq(<%= @games.first.mode - 1 %>).addClass('active'); // desktop and tablet tab
+$('.tabs').find('.tab').eq(<%= @games.first.mode - 1 + Game::MODES.size %>).addClass('active'); // mobile tab
 
 // Populate leaderboard
 <% @games.each_with_index do |game, i| %>
