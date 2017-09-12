@@ -1,10 +1,41 @@
-<% if @question.game.mode == 2 %>
-  $(".question").html("<h2> <%= @question.answer.country.name %> </h2>");
-  console.log("2")
-<% else %>
-  $(".question").html("<%= j image_tag @question.answer.country.flag %>");
-  console.log("<%= j image_tag @question.answer.country.flag %>")
-<% end %>
-$('.header-elem-score').html('Score: <%= @question.game.score %>');
 
-// console.log('<%= @question.answer.country.name %>');
+<% case @question.game.mode %>
+<% when 1 %>
+	<% attempt_idx = @last_question.choices.map(&:country_id).index(@last_question.attempt.country_id) %>
+	<% answer_idx  = @last_question.choices.map(&:country_id).index(@last_question.answer.country_id) %>
+
+	$(".card-link").parent().css('opacity', "0.2");
+
+	<% if @last_question.attempt.correct %>
+		$(".card-link.<%= attempt_idx %>").parent().css('opacity', "1").css('outline', "3px solid #00FF00");		
+	<% else %>
+		$(".card-link.<%= attempt_idx %>").parent().css('opacity', "1").css('outline', "3px solid #FF0000");
+		$(".card-link.<%= answer_idx  %>").parent().css('opacity', "1").css('outline', "3px solid #00FF00");
+	<% end %>
+
+	// Reload after 5 seconds
+	setTimeout(function() {
+		location.reload(true);
+  }, 5000);
+  
+  $(document).click(function(e) { 
+    // Reload if left button pressed
+    if (e.button == 0) {
+      location.reload(true); 
+    }
+	});
+
+	// $(document).keypress(function(e) {
+	// 	// Reload if enter key pressed
+ //    if(e.which == 13) {
+ //      location.reload(true);
+ //    }
+	// });
+
+<% when 2 %>
+  $(".question").html("<h2> <%= @question.answer.country.name %> </h2>");
+  $('.header-elem-score').html('Score: <%= @question.game.score %>');
+<% when 4 %>
+  $(".question").html("<%= j image_tag @question.answer.country.flag %>");
+  // console.log("<%= j image_tag @question.answer.country.flag %>")
+<% end %>

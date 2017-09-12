@@ -1,11 +1,40 @@
 <div class="wrapper-std">
   <div class="row">
-    <% @question.choices.each do |choice| %>
+    <% @question.choices.each_with_index do |choice, i| %>
       <div class="col-md-3 col-xs-4">
         <div class="flag-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= image_path choice.country.flag %>);">
-          <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post, class: 'card-link' do %><% end %>
+          <%= link_to question_attempts_path(@question, country_id: choice.country.id), method: :post, remote: true, class: "card-link #{i}" do %><% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+     //  var shownEffects = false;
+
+     //  var showEffects = function() {
+     //  	// do stuff
+     //  }
+     //  $(".card-link" ).click(function(event) {
+     //  	if (shownEffects) {
+     //  		shownEffects = false;
+     //  		return;
+     //  	}
+
+     //    event.preventDefault();
+     //    event.stopPropagation();
+
+     //    showEffects();
+
+     //    thisLink = $(this);
+     //    setTimeout(function() {
+     //    	shownEffects = true;
+     //    	thisLink.click();
+     //    }, 2000);
+     //  });
+    });
+  </script>
+<% end %>

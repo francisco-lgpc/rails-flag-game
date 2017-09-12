@@ -15,6 +15,7 @@ class AttemptsController < ApplicationController
     question.game.score += 1 if attempt.correct
     question.game.save!
 
+    @last_question = question
     @question = question.game.questions.find(&:not_answered?)
 
     respond_to do |format|
