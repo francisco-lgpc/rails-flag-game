@@ -1,7 +1,7 @@
 
-
-<div id="vmap"></div>
-
+<div class="wrapper-map">
+  <div id="vmap"></div>
+</div>
 <% content_for(:after_js) do %>
   <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -17,7 +17,7 @@
           // Hide hover effect
           // event.preventDefault();
         },
-        onRegionClick: function(element, code, region)
+        onRegionClick: function(event, code, region)
         {
           selectedRegion: null;
           var d = {
@@ -29,7 +29,8 @@
             url: '<%= j question_attempts_path(question) %>',
             data: d,
             success: function(data) {
-              if(!data.error) location.reload(true);
+              // if(!data.error) location.reload(true);
+              // console.log(data);
             }
           });
         },
