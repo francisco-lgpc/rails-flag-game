@@ -2,29 +2,36 @@
   hr {
     border: .5px solid $grey;
   }
+  width: 360px;
+  margin: auto;
+  @media (max-width: 500px) {
+  	width: 300px
+  }
+  @media (max-width: 350px) {
+  	width: 280px
+  }
 }
 
-form {
+form.login-form {
   .form-group {
     position: relative;
     .form-control {
       height: 50px;
     }
     color: $grey;
+		.wrapper-icon {
+			position: absolute;
+			right: 10px;
+			top: 14px;
+			z-index: 1;
+			width: 30px;
+			text-align: center;
+		}
     i {
       color: $grey;
-      position: absolute;
-      right: 14px;
-      top: 17px;
-      z-index: 1;
     }
   }
 }
-
-.form-group.password {
-  margin: 0;
-}
-
 
 .or-separator {
   background: $lighter-grey;
@@ -43,11 +50,12 @@ form {
 }
 
 .form-under {
-  margin: 8px 2px;
+  margin: 0 2px;
   height: 40px;
   display: flex;
   justify-content: space-between;
 	.checkbox {
+		margin: 0;
   	opacity: 0.8;
   	transition: all 0.3s ease;
 	  &:hover {
@@ -55,13 +63,19 @@ form {
 	  }		
 	}
   .forget-password {
-    margin-top: 10px;
+    margin: 0;
     color: $grey;
   	opacity: 0.8;
   	transition: all 0.3s ease;
 	  &:hover {
 	    opacity: 1;
 	  }
+  }
+  @media (max-width: 500px) {
+  	font-size: 15px;
+  }
+  @media (max-width: 350px) {
+  	font-size: 14px;
   }
 }
 

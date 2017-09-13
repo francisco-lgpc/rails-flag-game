@@ -30,6 +30,10 @@
     &:focus {
       outline: none;
     }
+
+    @media (max-width: 600px) {
+      font-size: 12px  
+    }
   }
 
   hr {

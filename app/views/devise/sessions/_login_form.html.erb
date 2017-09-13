@@ -1,12 +1,16 @@
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>
   <div class="form-inputs">
     <%= f.input :email, label: false  do %>
       <%= f.input_field :email, placeholder: 'Email Address', class: 'form-control' %>
-      <i class="fa fa-envelope"></i>
+      <div class="wrapper-icon">
+      	<i class="fa fa-envelope"></i>
+    	</div>
     <% end %>
     <%= f.input :password, label: false  do %>
       <%= f.input_field :password, placeholder: "Password", class: 'form-control password' %>
-      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <div class="wrapper-icon">
+      	<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+    	</div>
     <% end %>
   </div>
 
