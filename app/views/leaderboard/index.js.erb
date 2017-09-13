@@ -5,7 +5,7 @@ $('.tabs').find('.tab').eq(<%= @games.first.mode - 1 + Game::MODES.size %>).addC
 
 // Populate leaderboard
 <% @games.each_with_index do |game, i| %>
-	$('.leaderboard-data').eq( <%= (i * 2) %> ).html('<p> <%= j game.user.email %> </p>');
+	$('.leaderboard-data').eq( <%= (i * 2) %> ).html('<p> <%= j game.user.username %> </p>');
 	$('.leaderboard-data').eq( <%= (i * 2) + 1 %> ).html('<p> <%= game.score %> </p>');
 <% end %>
 

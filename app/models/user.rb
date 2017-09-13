@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:facebook]
 
-    def self.find_for_facebook_oauth(auth)
+  before_validation :set_default_username
+
+  validates :username, presence: true
+
+  def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = auth.info.image
@@ -25,5 +29,11 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  private
+
+  def set_default_username
+    self.username ||= self.first_name
   end
 end
