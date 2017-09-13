@@ -1,0 +1,22 @@
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, label: false  do %>
+      <%= f.input_field :email, placeholder: 'Email Address', class: 'form-control' %>
+      <i class="fa fa-envelope"></i>
+    <% end %>
+    <%= f.input :password, label: false  do %>
+      <%= f.input_field :password, placeholder: "Password", class: 'form-control password' %>
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+    <% end %>
+  </div>
+
+  <div class="form-under">
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'pull-right forget-password' %>
+    <% end -%>
+  </div>
+
+  <%= button_tag "Log in", type: :submit, class: 'btn-base btn-red' %>
+<% end %>

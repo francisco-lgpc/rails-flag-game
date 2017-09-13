@@ -24,6 +24,8 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'sinatra', ">= 2.0.0.beta2", require: false # Sidekiq Web UI Dependency
 
+gem 'omniauth-facebook'
+
 
 group :development, :test do
   gem 'pry-byebug'

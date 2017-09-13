@@ -1,0 +1,45 @@
+$btn-height: 50px;
+
+.btn-base {
+  height: $btn-height;
+  line-height: $btn-height;
+  color: white;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+	opacity: 1;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    opacity: 0.85;
+  }
+  &:visited{
+	  color: white;
+  }	
+}
+
+.btn-facebook {
+  background-color: $facebook-blue;
+  i {
+    padding: 0 60px 0 20px;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+}
+
+.btn-border {
+  background-color: transparent;
+  line-height: calc(#{$btn-height} - 5px);
+  color: $grey !important;
+  border: 2px solid $grey;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $red !important;
+    border: 2px solid $red;
+    box-shadow: none;
+  }
+}

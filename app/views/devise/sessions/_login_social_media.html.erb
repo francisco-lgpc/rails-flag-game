@@ -1,0 +1,24 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+
+    <% if OmniAuth::Utils.camelize(provider) == 'Facebook' %>
+      <% btn_class = "btn-facebook btn-base" %>
+      <% icon = "fa fa-facebook" %>
+    <% else %>
+      <% btn_class = "" %>
+    <% end %>
+
+    <%= link_to omniauth_authorize_path(resource_name, provider), class: btn_class do %>
+      <i class="<%= icon %>"></i>
+      <%= "Log in with #{OmniAuth::Utils.camelize(provider)}" %>
+    <% end %>
+
+    <div class="or-separator">
+      <span class="h6 or-separator-text">or</span>
+      <hr>
+    </div>
+
+    <br>
+
+  <% end -%>
+<% end -%>
