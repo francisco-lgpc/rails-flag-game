@@ -50,18 +50,19 @@ class GamesController < ApplicationController
     end
   end
 
-  def generate_choices_and_answer(question, n = 12, options = {})
-    countries = sample_countries(n, options)
-    countries.map do |country|
+  def generate_choices(question, answer_country, n = 12, options = {})
+    countries = sample_countries(n - 1, options) + [answer_country]
+    countries.shuffle.map do |country|
       Choice.create!(country: country, question: question)
     end
-    Answer.create!(country: countries.sample, question: question)
+    Answer.create!(country: answer_country, question: question)
   end
 
   def generate_questions(num_questions = 15, num_choices = 12, options = {})
-    (1..num_questions).map do
+    answer_countries = sample_countries(num_questions, options)
+    answer_countries.map do |answer_country|
       question = Question.create!(game: @game)
-      generate_choices_and_answer(question, num_choices, options)
+      generate_choices(question, answer_country, num_choices, options)
     end
   end
 
