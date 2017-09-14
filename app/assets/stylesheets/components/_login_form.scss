@@ -13,10 +13,12 @@
 }
 
 form.login-form {
+  
   .form-group {
     position: relative;
     .form-control {
       height: 50px;
+			color: $grey;
     }
     color: $grey;
 		.wrapper-icon {
