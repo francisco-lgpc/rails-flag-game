@@ -43,14 +43,16 @@ class GamesController < ApplicationController
   end
 
   def sample_countries(n = 12, options = {})
+    countries = Country.where.not(id: options[:exclude].try(:id))
     if options[:for_map]
-      Country.where(id: Country.available_on_map.ids.sample(n))
+      countries.where(id: Country.available_on_map.ids.sample(n))
     else
-      Country.where(id: Country.ids.sample(n))
+      countries.where(id: Country.ids.sample(n))
     end
   end
 
   def generate_choices(question, answer_country, n = 12, options = {})
+    options[:exclude] = answer_country
     countries = sample_countries(n - 1, options) + [answer_country]
     countries.shuffle.map do |country|
       Choice.create!(country: country, question: question)
@@ -65,7 +67,6 @@ class GamesController < ApplicationController
       generate_choices(question, answer_country, num_choices, options)
     end
   end
-
 
   def set_game
     @game = Game.new(mode: params[:game_mode], user: current_user)
