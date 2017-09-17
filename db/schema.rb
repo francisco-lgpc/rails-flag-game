@@ -10,38 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913181859) do
+ActiveRecord::Schema.define(version: 20170917192115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "answers", force: :cascade do |t|
-    t.integer  "question_id"
-    t.integer  "country_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["country_id"], name: "index_answers_on_country_id", using: :btree
-    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
-  end
-
-  create_table "attempts", force: :cascade do |t|
-    t.boolean  "correct"
-    t.integer  "question_id"
-    t.integer  "country_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["country_id"], name: "index_attempts_on_country_id", using: :btree
-    t.index ["question_id"], name: "index_attempts_on_question_id", using: :btree
-  end
-
-  create_table "choices", force: :cascade do |t|
-    t.integer  "question_id"
-    t.integer  "country_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["country_id"], name: "index_choices_on_country_id", using: :btree
-    t.index ["question_id"], name: "index_choices_on_question_id", using: :btree
-  end
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -57,15 +29,8 @@ ActiveRecord::Schema.define(version: 20170913181859) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "questions"
     t.index ["user_id"], name: "index_games_on_user_id", using: :btree
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.boolean  "answered",   default: false
-    t.integer  "game_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["game_id"], name: "index_questions_on_game_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,12 +59,5 @@ ActiveRecord::Schema.define(version: 20170913181859) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "answers", "countries"
-  add_foreign_key "answers", "questions"
-  add_foreign_key "attempts", "countries"
-  add_foreign_key "attempts", "questions"
-  add_foreign_key "choices", "countries"
-  add_foreign_key "choices", "questions"
   add_foreign_key "games", "users"
-  add_foreign_key "questions", "games"
 end

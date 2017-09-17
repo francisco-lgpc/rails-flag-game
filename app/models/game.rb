@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
-  has_many :questions, dependent: :delete_all
+  
+  serialize :questions, Array
 
   validates :score, :mode, presence: true, numericality: { only_integer: true }
 

@@ -54,28 +54,18 @@ class GamesController < ApplicationController
   def generate_choices(question, answer_country, n = 12, options = {})
     options[:exclude] = answer_country
     countries = sample_countries(n - 1, options) + [answer_country]
-    countries.shuffle.map do |country|
-      Choice.create!(country: country, question: question)
-    end
-    Answer.create!(country: answer_country, question: question)
+    countries.ids
   end
 
   def generate_questions(num_questions = 15, num_choices = 12, options = {})
     answer_countries = sample_countries(num_questions, options)
-    answer_countries.map do |answer_country|
-      question = Question.create!(game: @game)
-      generate_choices(question, answer_country, num_choices, options)
+    self.questions = answer_countries.map do |answer_country|  
+      { answer_country.id => generate_choices(question, answer_country, num_choices, options) }
     end
+    self.save!
   end
 
   def set_game
     @game = Game.new(mode: params[:game_mode], user: current_user)
   end
-
-  def generate_map
-    worldize = Worldize::Countries.new
-    img = worldize.draw(ocean: '#3A3C3C', land: 'grey', border: 'black', 'Portugal' => 'red') # Magick::Image of RMagick
-    img.write('app/assets/images/map.png')
-  end
-
 end
