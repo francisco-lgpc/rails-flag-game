@@ -10,19 +10,23 @@ class Game < ApplicationRecord
   MODES = ['Country to Flag', 'Country to Map', 'Flag to Country',
            'Flag to Map',     'Map to Country', 'Map to Flag']
 
-  def mode_path
-    MODES[mode - 1].to_snake
-  end
-
   def mode_name
     MODES[mode - 1]
+  end
+
+  def mode_path
+    mode_name.to_snake
+  end
+
+  def has_map?
+    mode_path.split('_').include?('map')
   end
 
   def self.next_question(questions)
     questions.find { |question| !question['answered'] }
   end
 
-  def self.generate_questions(num_questions = 15, num_choices = 12, options = {})
+  def self.generate_questions(num_questions, num_choices, options = {})
     answer_countries = sample_countries(num_questions, options)
     answer_countries.map.with_index do |answer_country, i|  
       { 
@@ -47,7 +51,7 @@ class Game < ApplicationRecord
 
   private
 
-  def self.sample_countries(n = 12, options = {})
+  def self.sample_countries(n, options = {})
     countries = Country.where.not(id: options[:exclude].try(:id))
     if options[:for_map]
       countries.where(id: countries.available_on_map.ids.sample(n))
@@ -56,7 +60,7 @@ class Game < ApplicationRecord
     end
   end
 
-  def self.generate_choices(answer_country, n = 12, options = {})
+  def self.generate_choices(answer_country, n, options = {})
     options[:exclude] = answer_country
     countries = sample_countries(n - 1, options) + [answer_country]
     countries.map(&:id).shuffle
