@@ -1,7 +1,5 @@
 class Games::AttemptsController < ApplicationController
   def create
-
-  	@game        = Game.find(params[:game_id])
     question_idx = session[:game]['questions'].find { |question| !question['answered'] }['question']
 
     attempt = Country.where(id: params[:country_id]).ids.first || Country.find_by(code: params['country_code']).id
@@ -18,7 +16,7 @@ class Games::AttemptsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html { redirect_to @game }
+      format.html { redirect_to new_game_path }
     end
   end
 end

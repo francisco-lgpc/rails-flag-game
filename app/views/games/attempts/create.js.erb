@@ -33,7 +33,7 @@
     onRegionClick: function(event, code, region)
     {
       element.preventDefault();
-      location.reload(true);
+      nextPage();
     },
   });
 
@@ -56,24 +56,41 @@
 $(".card-link").click(function(e){
 	e.preventDefault();
 	e.stopPropagation();
-	location.reload(true);
+	nextPage();
 });
 
 // Reload after 5 seconds
 setTimeout(function() {
-	location.reload(true);
+	nextPage();
 }, 2000);
 
 $(document).click(function(e) { 
   // Reload if left button pressed
   if (e.button == 0) {
-    location.reload(true); 
+    nextPage(); 
   }
 });
+
+function nextPage() {
+	<% if session[:game]['questions'].all? { |question| question['answered'] } %>
+		$.ajax({
+		  type: "POST",
+		  url: '<%= j games_path %>',
+		  data: {},
+		  success: function(data) {
+		  	console.log(data);
+		    //window.location.replace("<%= j game_path(Game.last.id ) %>")
+		  }
+		});
+
+	<% else %>
+		location.reload(true);
+	<% end %>	
+}
 
 // $(document).keypress(function(e) {
 // 	// Reload if enter key pressed
 //    if(e.which == 13) {
-//      location.reload(true);
+//      nextPage();
 //    }
 // });

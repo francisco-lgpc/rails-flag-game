@@ -1,0 +1,10 @@
+<div class="container">
+
+  <div class="header-game">
+    <p class='text-center'> <%= @game.mode_name %> </h1>
+    <p class="header-elem-score hidden-xxs">Score: <%= session[:game]['score'] %> </p>
+  </div>
+
+  <%= render "games/game_modes/#{@game.mode_path}", game: @game, question: @question %>
+
+</div>

@@ -3,7 +3,7 @@
     <% question[:choices].each_with_index do |choice, i| %>
       <div class="col-md-3 col-xs-4">
         <div class="flag-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= image_path choice.flag %>);">
-          <%= link_to games_attempts_path(game, country_id: choice.id), method: :post, remote: true, class: "card-link #{i}" do %><% end %>
+          <%= link_to games_attempts_path(country_id: choice.id), method: :post, remote: true, class: "card-link #{i}" do %><% end %>
         </div>
       </div>
     <% end %>

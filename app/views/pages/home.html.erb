@@ -11,7 +11,7 @@
       <ul>
         <% Game::MODES.each_with_index do |game_mode, i| %>
           <li>
-            <%= link_to games_path(game_mode: i + 1), method: :post, class: 'menu-elem' do %>
+            <%= link_to new_game_path(game_mode: i + 1), class: 'menu-elem' do %>
               <div class="link-content">
                 <div class="link-text"> <%= game_mode %> </div>
                 <div class="icons hidden">
