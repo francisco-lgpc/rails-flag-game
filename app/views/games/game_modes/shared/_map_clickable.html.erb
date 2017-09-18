@@ -22,11 +22,10 @@
           selectedRegion: null;
           var d = {
             country_code: code.toUpperCase(),
-            question_id: '<%= question.id %>',
           };
           $.ajax({
             type: "POST",
-            url: '<%= j question_attempts_path(question) %>',
+            url: '<%= j games_attempts_path(game) %>',
             data: d,
             success: function(data) {
               // if(!data.error) location.reload(true);

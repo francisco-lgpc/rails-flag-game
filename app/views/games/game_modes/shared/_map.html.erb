@@ -18,7 +18,7 @@
             event.preventDefault();
           },
       });
-      jQuery('#vmap').vectorMap('set', 'colors', {<%= j @question.answer.country.code.downcase %>: '<%= j colors[:red] %>'});
+      jQuery('#vmap').vectorMap('set', 'colors', {<%= j answer_code %>: '<%= j colors[:red] %>'});
     });
   </script>
 <% end %>

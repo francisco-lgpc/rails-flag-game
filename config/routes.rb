@@ -4,9 +4,12 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
 
   root to: 'pages#home'
-  resources :games, only: [:new, :create, :show]
-  resources :questions, only: [] do
-    resources :attempts, only: :create
+  resources :games, only: [:new, :create, :show] do
+
+  end
+
+  namespace :games do
+    post ':game_id/attempts', to: 'attempts#create', as: 'attempts'  
   end
 
   resources :leaderboard, only: :index

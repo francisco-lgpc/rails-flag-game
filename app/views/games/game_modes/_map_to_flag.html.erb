@@ -1,5 +1,5 @@
 
-<%= render 'games/game_modes/shared/map', question: @question %>
+<%= render 'games/game_modes/shared/map', answer_code: question[:answer].code.downcase %>
 
-<%= render 'games/game_modes/shared/flag_choices', question: @question %>
+<%= render 'games/game_modes/shared/flag_choices', game: game, question: question %>
 

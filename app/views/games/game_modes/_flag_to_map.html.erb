@@ -1,4 +1,4 @@
 
-  <%= render 'games/game_modes/shared/flag', question: @question %>
+  <%= render 'games/game_modes/shared/flag', country_flag: question[:answer].flag %>
 
-  <%= render 'games/game_modes/shared/map_clickable', question: @question %>
+  <%= render 'games/game_modes/shared/map_clickable', game: game, question: question %>

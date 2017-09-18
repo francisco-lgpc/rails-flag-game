@@ -1,5 +1,5 @@
 
-<%= render 'games/game_modes/shared/flag', question: @question %>
+<%= render 'games/game_modes/shared/flag', country_flag: question[:answer].flag %>
 
-<%= render 'games/game_modes/shared/country_choices', question: @question %>
+<%= render 'games/game_modes/shared/country_choices', game: game, question: question %>
 

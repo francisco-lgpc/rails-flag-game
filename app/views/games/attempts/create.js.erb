@@ -1,12 +1,14 @@
-<% case @last_question.game.mode %>
+<% case session[:game]['mode'] %>
 <% when *[1, 3, 5, 6] %>
-	<% attempt_idx = @last_question.choices.map(&:country_id).index(@last_question.attempt.country_id) %>
-	<% answer_idx  = @last_question.choices.map(&:country_id).index(@last_question.answer.country_id) %>
+
+	<% attempt_idx = @question[:choices].index(@question[:attempt]) %>
+	<% answer_idx  = @question[:choices].index(@question[:answer]) %>
+
 
 	// $(".card-link").not(".<%= attempt_idx %>").not(".<%= answer_idx %>").parent().css('opacity', "0.2");
 
 	$(".card-link").not(".<%= attempt_idx %>").not(".<%= answer_idx %>").parent().animate({ opacity: "0.2" }, 200);
-	<% if @last_question.attempt.correct %>
+	<% if @question[:correct] %>
 		$(".card-link.<%= attempt_idx %>").parent().css('outline', "3px solid #00FF00");		
 	<% else %>
 		$(".card-link.<%= attempt_idx %>").parent().css('outline', "3px solid #FF0000");
@@ -36,16 +38,16 @@
   });
 
 	// Color new map according to right/wrong answer
-	<% if @last_question.attempt.correct %>
+	<% if @question[:correct] %>
 	  jQuery('#vmap').vectorMap('set', 'colors', 
 	  {
-	  	<%= j @last_question.attempt.country.code.downcase %>: '#00FF00'
+	  	<%= j @question[:attempt].code.downcase %>: '#00FF00'
 	  });
 	<% else %>
 	  jQuery('#vmap').vectorMap('set', 'colors', 
 	  {
-	  	<%= j @last_question.answer.country.code.downcase %>: '#00FF00', 
-	  	<%= j @last_question.attempt.country.code.downcase %>: '#FF0000'
+	  	<%= j @question[:answer].code.downcase %>: '#00FF00', 
+	  	<%= j @question[:attempt].code.downcase %>: '#FF0000'
 	  });
 	<% end %>
 <% end %>

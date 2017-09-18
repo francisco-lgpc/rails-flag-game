@@ -17,7 +17,7 @@
 
 <% else %>
 
-  <%= render "games/game_modes/#{@game.mode_path}" %>
+  <%= render "games/game_modes/#{@game.mode_path}", game: @game, question: @question %>
 
 <% end %>
 
