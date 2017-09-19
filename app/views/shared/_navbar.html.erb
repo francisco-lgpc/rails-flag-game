@@ -5,7 +5,7 @@
   <% end %>
 
 
-  <div class="navbar-wagon-center hidden-xs">
+  <div class="navbar-wagon-center">
     <%= link_to leaderboard_index_path, class: "navbar-wagon-item navbar-wagon-link" do %>
       <i class="fa fa-trophy" aria-hidden="true"></i> 
     <% end %>
@@ -19,7 +19,7 @@
     <%# end %> 
   </div>
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs">
+  <div class="navbar-wagon-right">
 
 
     <% if user_signed_in? %>
@@ -54,31 +54,6 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item visible-xs">
-    <% if user_signed_in? %>
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <!-- Links when logged in -->
-          <li> 
-            <%= link_to leaderboard_index_path do %> 
-              <i class="fa fa-trophy" aria-hidden="true"></i> <%= t(".leaderboard", default: "Leaderboard") %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
     <% end %>
   </div>
 </div>

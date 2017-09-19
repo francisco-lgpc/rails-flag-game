@@ -4,9 +4,7 @@
 	<% attempt_idx = @question[:choices].index(@question[:attempt]) %>
 	<% answer_idx  = @question[:choices].index(@question[:answer]) %>
 
-
 	// $(".card-link").not(".<%= attempt_idx %>").not(".<%= answer_idx %>").parent().css('opacity', "0.2");
-
 	$(".card-link").not(".<%= attempt_idx %>").not(".<%= answer_idx %>").parent().animate({ opacity: "0.2" }, 200);
 	<% if @question[:correct] %>
 		$(".card-link.<%= attempt_idx %>").parent().css('outline', "3px solid #00FF00");		
@@ -59,7 +57,7 @@ $(".card-link").click(function(e){
 	nextPage();
 });
 
-// Reload after 5 seconds
+// Reload after 2 seconds
 setTimeout(function() {
 	nextPage();
 }, 2000);
@@ -78,11 +76,9 @@ function nextPage() {
 		  url: '<%= j games_path %>',
 		  data: {},
 		  success: function(data) {
-		  	console.log(data);
-		    //window.location.replace("<%= j game_path(Game.last.id ) %>")
+		  	
 		  }
 		});
-
 	<% else %>
 		location.reload(true);
 	<% end %>	

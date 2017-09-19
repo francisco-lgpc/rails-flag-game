@@ -1,9 +1,6 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 3px 12px 0 rgba(0,0,0,0.17),0 3px 3px 0 rgba(0,0,0,0.11);
-  // background: linear-gradient(
-  //   180deg, $sand-lighter, $sand-light, $sand, $sand, $sand, $sand-light, $sand-lighter
-  // );
   background: $sand;
   transition: all 0.3s ease;
   height: 70px;
@@ -11,16 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  // &:hover {
-  //   box-shadow: 0 6px 12px 0 rgba(0,0,0,0.17),0 6px 3px 0 rgba(0,0,0,0.11);
-  //   height: 74px;
-  //   margin-bottom: -4px;
-
-  // }
+  @media (max-width: 500px) {
+    padding: 0 8px;
+  }
 }
-
-
 
 /* Logo */
 .navbar-wagon-brand img {
@@ -42,7 +33,7 @@
 }
 
 /* Center section */
-$navbar-center-width: 160px;
+$navbar-center-width: 120px;
 .navbar-wagon-center {
   display: flex;
   align-items: center;
@@ -50,12 +41,22 @@ $navbar-center-width: 160px;
   position: absolute;
   left: calc(50% - #{$navbar-center-width/2});
   width: $navbar-center-width;
+  a {
+    padding: 0;
+  }
+
+  @for $i from 1 through 40 {
+    @media (max-width: 500px - $i * 5px) {
+      left: calc(50% - #{$navbar-center-width/2} * #{1 - $i/100});
+      width: calc(#{$navbar-center-width} * #{1 - $i/100});
+    }
+  }
 }
 
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  // padding: 0 5px;
 }
 
 /* Navbar link */
@@ -65,6 +66,19 @@ $navbar-center-width: 160px;
   i {
     font-size: 30px;
   }
+  .fa-home {
+    font-size: 35px; 
+  }
+  @media (max-width: 600px) {
+    i {
+      font-size: 25px;
+    }
+    .fa-home {
+      font-size: 30px; 
+    }
+    margin-bottom: -5px;
+  }
+
 }
 .navbar-wagon-link:hover {
   color: #da552f;
