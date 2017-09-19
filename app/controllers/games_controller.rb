@@ -6,7 +6,7 @@ class GamesController < ApplicationController
     session[:game]['mode']  ||= @game.mode
     session[:game]['score'] ||= 0
 
-    options = @game.has_map? { for_map: true } : {}
+    options = @game.has_map? ? { for_map: true } : {}
     session[:game]['questions'] ||= Game.generate_questions(15, 12, options)
     
     question  = Game.next_question(session[:game]['questions'])
